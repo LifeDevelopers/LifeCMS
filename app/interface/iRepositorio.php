@@ -4,6 +4,6 @@ interface iRepositorio{
 	public function remover($id);
 	public function alterar($obj);
 	public function buscar($id);
-	public function filtrar($filtro);
+	public function filtrar($obj);
 }
 ?>

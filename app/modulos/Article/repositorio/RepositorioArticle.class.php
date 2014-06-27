@@ -3,9 +3,9 @@
 * Classe de repositório de Articles
 */
 include_once('../../../config/Repositorio.class.php');
-include_once('../../../interface/iRepositorio.php');
+include_once('../../../interface/iCadastroArticle.php');
 
-class RepositorioArticle implements iRepositorio
+class RepositorioArticle implements iCadastroArticle
 {
 	private $conn;
 
@@ -34,6 +34,7 @@ class RepositorioArticle implements iRepositorio
 			if($ps->rowCount() != 1){
 				throw new PDOException("Erro ao inserir dados no Banco.");
 			}
+			$ps = null;
 		}catch(PDOException $e){
 			$ps->rollBack();
 			echo "<p>Erro ao inserir dados no Banco.</p>";
@@ -99,31 +100,44 @@ class RepositorioArticle implements iRepositorio
 
 	// Sobrescrevendo o método buscar
 	public function buscar($id){
-		$sql = "SELECT * FROM ARTICLE a, CATEGORIA c WHERE a.cat_id = c.cat_id and a.id = ?";
-		$ps = self::getStatement($sql);
-		$ps->bindParam(1,$id,PDO::PARAM_INT);
-		$ps->execute();
-		$rs = $ps->fetch(PDO::FETCH_ASSOC);
+		try{
+			$sql = "SELECT * FROM ARTICLE a, CATEGORIA c WHERE a.cat_id = c.cat_id and a.id = ?";
+			$ps = self::getStatement($sql);
+			$ps->bindParam(1,$id,PDO::PARAM_INT);
+			$ps->execute();
+			$rs = $ps->fetch(PDO::FETCH_ASSOC);
+			
+			
+			$article = new Article();
+			$article->setId($rs['art_id']);
+			$article->setTitulo($rs['art_titulo']);
+			$article->setConteudo($rs['art_conteudo']);
+			$article->setDtPublicacao($rs['art_dtpublicacao']);
+			$article->setTags($rs['art_tags']);
+			$article->setPublicado($rs['art_publicado']);
+			$article->setImagem($rs['art_imagem']);
+			$article->setBanner($rs['art_banner']);
+			
+			$categoria = new Categoria();
+			$categoria->setId($rs['cat_id']);
+			$categoria->setTitulo($rs['cat_titulo']);
+			$categoria->setDescricao($rs['cat_descricao']);
+			$categoria->setSubCategoria($rs['cat_subid']);
+			$article->setCategoria($categoria);
+			
+			$ps = null;
+		}catch (PDOException $e){
+			echo "<p>Erro ao tentar alterar dados no Banco.</p>";
+			echo "<p>Arquivo: ".$e->getFile()."</p>";
+			echo "<p>Message: ".$e->getMessage()."</p>";
+			echo "<p>Linha: ".$e->getLine()."</p>";
+		}
 		
-		
-		$article = new Article();
-		$article->setId($rs['id']);
-		$article->setTitulo($rs['titulo']);
-		$article->setConteudo($rs['conteudo']);
-		
-		$categoria = new Categoria();
-		$categoria->setId($rs['id']);
-		$categoria->setTitulo($rs['titulo']);
-		$categoria->setDescricao($rs['descricao']);
-		$categoria->setSubCategoria($rs['subcategoria']);
-		$article->setCategoria($categoria);
-		$article->setQtdView($rs['qtdview']);
-		$article->setQtdComentario($rs['qtdcomentario']);
-		
+		return $article;
 	}
 
 	// Sobrescrevendo o método filtrar
-	public function filtrar($filtro){
+	public function filtrar($artigo){
 		//implementar metodo filtrar no banco de dados
 	}
 

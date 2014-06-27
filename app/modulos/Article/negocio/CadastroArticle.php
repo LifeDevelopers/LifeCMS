@@ -34,8 +34,8 @@ class CadastroArticle implements iCadastroArticle
 	}
 
 	// Sobrescrevendo o método filtrar
-	public function filtrar($filtro){
-		return self::$repositorio->filtrar($filtro);
+	public function filtrar($artigo){
+		return self::$repositorio->filtrar($artigo);
 	}
 
 	// Sobrescrevendo o método validar
