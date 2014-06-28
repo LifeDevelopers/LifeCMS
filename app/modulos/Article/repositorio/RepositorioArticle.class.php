@@ -138,7 +138,66 @@ class RepositorioArticle implements iCadastroArticle
 
 	// Sobrescrevendo o método filtrar
 	public function filtrar($artigo){
-		//implementar metodo filtrar no banco de dados
+		$listaArtigos = array();
+		try{
+			$sql = "SELECT * FROM ARTICLE a, CATEGORIA c WHERE a.cat_id = c.cat_id";
+			$sqlConector = " AND ";
+			$artigo = new Article();
+			if($artigo->getTitulo() != null && !empty($artigo->getTitulo())){
+				$sql .= $sqlConector."art_titulo LIKE '%?%' \n ";
+			}
+			if($artigo->getConteudo() != null && !empty($artigo->getConteudo())){
+				$sql .= $sqlConector."art_conteudo LIKE '%?%' \n";
+			}
+			if($artigo->getDtPublicacao() != null && !empty($artigo->getDtPublicacao())){
+				$sql .= $sqlConector."art_dtpublicacao = ? \n";
+			}
+			if($artigo->getTags() != null && !empty($artigo->getTags())){
+				$sql .= $sqlConector."art_tags LIKE '%?%' \n";
+			}
+			if($artigo->getCategoria()->getTitulo() != null && !empty($artigo->getCategoria()->getTitulo())){
+				$sql .= $sqlConector."cat_titulo LIKE '%?%' \n";
+			}
+			if($artigo->getCategoria()->getDescricao() != null && !empty($artigo->getCategoria()->getDescricao())){
+				$sql .= $sqlConector."cat_descricao LIKE '%?%' \n";
+			}
+			
+			$ps = self::getStatement($sql);
+			$i = 1;
+			if($artigo->getTitulo() != null && !empty($artigo->getTitulo())){
+				$ps->bindParam($i, $artigo->getTitulo(), PDO::PARAM_STR);
+				$i++;
+			}
+			if($artigo->getConteudo() != null && !empty($artigo->getConteudo())){
+				$ps->bindParam($i, $artigo->getConteudo(), PDO::PARAM_STR);
+				$i++;
+			}
+			if($artigo->getDtPublicacao() != null && !empty($artigo->getDtPublicacao())){
+				$ps->bindParam($i, $artigo->getDtPublicacao(), PDO::PARAM_STR);
+				$i++;
+			}
+			if($artigo->getTags() != null && !empty($artigo->getTags())){
+				$ps->bindParam($i, $artigo->getTags(), PDO::PARAM_STR);
+				$i++;
+			}
+			if($artigo->getCategoria()->getTitulo() != null && !empty($artigo->getCategoria()->getTitulo())){
+				$ps->bindParam($i, $artigo->getCategoria()->getTitulo(), PDO::PARAM_STR);
+				$i++;
+			}
+			if($artigo->getCategoria()->getDescricao() != null && !empty($artigo->getCategoria()->getDescricao())){
+				$ps->bindParam($i, $artigo->getCategoria()->getDescricao(), PDO::PARAM_STR);
+				$i++;
+			}
+			$ps->execute();
+			$listaArtigos = $ps->fech(PDO::FETCH_ASSOC);
+			$ps = null;
+		}catch (PDOException $e){
+			echo "<p>Erro ao tentar alterar dados no Banco.</p>";
+			echo "<p>Arquivo: ".$e->getFile()."</p>";
+			echo "<p>Message: ".$e->getMessage()."</p>";
+			echo "<p>Linha: ".$e->getLine()."</p>";
+		}
+		return $listaArtigos;
 	}
 
 }

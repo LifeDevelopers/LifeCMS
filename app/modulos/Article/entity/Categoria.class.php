@@ -11,7 +11,7 @@ class Categoria
 
 	function __construct()
 	{
-
+		
 	}
 
 	public function setId($id) {
