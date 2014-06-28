@@ -3,6 +3,7 @@
 * Classe de entidade Artigo
 */
 include_once('Categoria.class.php');
+include_once('../../Utilizador/entity/Usuario.class.php');
 
 class Article
 {
@@ -15,8 +16,7 @@ class Article
 	private $imagem;
 	private $banner;
 	private $Categoria;
-	
-	private $publicado;
+	private $user;
 
 	function __construct()
 	{
@@ -92,6 +92,13 @@ class Article
 	}
 	public function getBanner(){
 		return self::$banner;
+	}
+	
+	public function setUser($usuario) {
+		self::$user = $usuario;
+	}
+	public function getUser() {
+		return self::$user;
 	}
 }
 ?>

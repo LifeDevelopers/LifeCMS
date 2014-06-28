@@ -18,7 +18,7 @@ class RepositorioArticle implements iCadastro
 	// Sobrescrevendo o método salvar
 	public function salvar($artigo){
 		try{
-			$sql = "INSERT INTO ARTICLE(art_titulo,art_conteudo,art_dtpublicacao,art_tags,art_publicado,art_imagem,art_banner,cat_id) VALUES(?,?,?,?,?,?,?,?)";
+			$sql = "INSERT INTO ARTICLE(art_titulo,art_conteudo,art_dtpublicacao,art_tags,art_publicado,art_imagem,art_banner,cat_id,use_id) VALUES(?,?,?,?,?,?,?,?,?)";
 			$ps = getStatement($sql);
 
 			$ps->bindParam(1,$artigo->getTitulo(),PDO::PARAM_STR);
@@ -29,6 +29,7 @@ class RepositorioArticle implements iCadastro
 			$ps->bindParam(6,$artigo->getImagem(),PDO::PARAM_STR);
 			$ps->bindParam(7,$artigo->getBanner(),PDO::PARAM_STR);
 			$ps->bindParam(8,$artigo->getCategoria()->getId(),PDO::PARAM_INT);
+			$ps->bindParam(9,$artigo->getUser()->getId(),PDO::PARAM_INT);
 			$ps->execute();
 			$ps->commit();
 			if($ps->rowCount() != 1){
@@ -71,7 +72,7 @@ class RepositorioArticle implements iCadastro
 	// Sobrescrevendo o método alterar
 	public function alterar($artigo){
 		try{
-			$sql = "UPDATE ARTICLE SET art_titulo = ?,art_conteudo = ?,art_dtpublicacao = ?,art_tags = ?,art_publicado = ?,art_imagem = ?,art_banner = ?,cat_id = ? WHERE art_id = ?";
+			$sql = "UPDATE ARTICLE SET art_titulo = ?,art_conteudo = ?,art_dtpublicacao = ?,art_tags = ?,art_publicado = ?,art_imagem = ?,art_banner = ?,cat_id = ?, user_id = ? WHERE art_id = ?";
 			$ps = self::getStatement($sql);
 			
 			$ps->bindParam(1,$artigo->getTitulo(),PDO::PARAM_STR);
@@ -82,6 +83,7 @@ class RepositorioArticle implements iCadastro
 			$ps->bindParam(6,$artigo->getImagem(),PDO::PARAM_STR);
 			$ps->bindParam(7,$artigo->getBanner(),PDO::PARAM_STR);
 			$ps->bindParam(8,$artigo->getCategoria()->getId(),PDO::PARAM_INT);
+			$ps->bindParam(9,$artigo->getUser()->getId(),PDO::PARAM_INT);
 			$ps->bindParam(9,$artigo->getId(),PDO::PARAM_INT);
 			$ps->execute();
 			$ps->commit();
@@ -102,7 +104,7 @@ class RepositorioArticle implements iCadastro
 	// Sobrescrevendo o método buscar
 	public function buscar($id){
 		try{
-			$sql = "SELECT * FROM ARTICLE a, CATEGORIA c WHERE a.cat_id = c.cat_id and a.id = ?";
+			$sql = "SELECT * FROM ARTICLE a, CATEGORIA c, UTILIZADOR u, PERFIL p WHERE a.cat_id = c.cat_id and a.use_id = u.use_id and u.per_id = p.per_id and a.id = ?";
 			$ps = self::getStatement($sql);
 			$ps->bindParam(1,$id,PDO::PARAM_INT);
 			$ps->execute();
@@ -125,6 +127,24 @@ class RepositorioArticle implements iCadastro
 			$categoria->setDescricao($rs['cat_descricao']);
 			$categoria->setSubCategoria($rs['cat_subid']);
 			$article->setCategoria($categoria);
+			
+			$user = new Usuario();
+			$user->setId($rs['use_id']);
+			$user->setNome($rs['use_nome']);
+			$user->setUser($rs['use_user']);
+			$user->setSenha($rs['use_senha']);
+			$user->setAlcunha($rs['use_alcunha']);
+			$user->setEmail($rs['use_email']);
+			$user->setDtCriacao($rs['use_dtcriacao']);
+			$user->setWebSite($rs['use_website']);
+			$user->setBiografia($rs['use_biografia']);
+			
+			$perfil =  new Perfil();
+			$perfil->setId($rs['per_id']);
+			$perfil->setNome($rs['per_nome']);
+			$user->setPerfil($perfil);
+			
+			$article->setUser($user);
 			
 			$ps = null;
 		}catch (PDOException $e){
