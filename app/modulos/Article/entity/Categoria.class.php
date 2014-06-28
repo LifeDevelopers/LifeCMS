@@ -9,11 +9,6 @@ class Categoria
 	private $descricao;
 	private $subCategoria;
 
-	function __construct()
-	{
-		
-	}
-
 	public function setId($id) {
 		self::$id = $id;
 	}

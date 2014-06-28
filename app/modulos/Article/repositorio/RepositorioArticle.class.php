@@ -3,9 +3,9 @@
 * Classe de repositório de Articles
 */
 include_once('../../../config/Repositorio.class.php');
-include_once('../../../interface/iCadastroArticle.php');
+include_once('../../../interface/iCadastro.php');
 
-class RepositorioArticle implements iCadastroArticle
+class RepositorioArticle implements iCadastro
 {
 	private $conn;
 

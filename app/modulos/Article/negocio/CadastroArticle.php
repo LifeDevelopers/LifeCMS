@@ -2,9 +2,9 @@
 /**
 * Classe para cadastro de Artigos onde teremos nossas regras de negócio
 */
-include_once('../interface/iCadastroArticle.php');
+include_once('../interface/iCadastro.php');
 
-class CadastroArticle implements iCadastroArticle
+class CadastroArticle implements iCadastro
 {
 	private $repositorio;
 
