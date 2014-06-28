@@ -26,7 +26,7 @@ class Categoria
 	public function setDescricao($descricao) {
 		self::$descricao = $descricao;
 	}
-	public function getDescricao($descricao) {
+	public function getDescricao() {
 		return self::$descricao;
 	}
 	

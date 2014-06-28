@@ -65,6 +65,7 @@ class RepositorioArticle implements iCadastro
 			echo "<p>Message: ".$e->getMessage()."</p>";
 			echo "<p>Linha: ".$e->getLine()."</p>";
 		}
+		return true;
 	}
 
 	// Sobrescrevendo o método alterar
@@ -142,7 +143,7 @@ class RepositorioArticle implements iCadastro
 		try{
 			$sql = "SELECT * FROM ARTICLE a, CATEGORIA c WHERE a.cat_id = c.cat_id";
 			$sqlConector = " AND ";
-			$artigo = new Article();
+			
 			if($artigo->getTitulo() != null && !empty($artigo->getTitulo())){
 				$sql .= $sqlConector."art_titulo LIKE '%?%' \n ";
 			}
