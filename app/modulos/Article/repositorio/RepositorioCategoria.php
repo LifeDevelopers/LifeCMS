@@ -6,9 +6,9 @@
  * @access public
  */
 include_once('../../../config/Repositorio.class.php');
-include_once('../../../interface/iCadastro.php');
+include_once('../../../interface/iRepositorio.php');
 
-class RepositorioCategoria implements iCadastro{
+class RepositorioCategoria implements iRepositorio{
 	
 	private $conn;
 	
@@ -161,7 +161,7 @@ class RepositorioCategoria implements iCadastro{
 		try{
 			$sql = "SELECT * FROM CATEGORIA";
 			$sqlConector = " AND ";
-			$categoria = new Categoria();
+
 			if($categoria->getTitulo() != null && !empty($categoria->getTitulo())){
 				$sql .= $sqlConector."cat_titulo LIKE '%?%' \n ";
 			}
