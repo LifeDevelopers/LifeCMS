@@ -65,7 +65,7 @@ class RepositorioCategoria implements iRepositorio{
 	public function remover($id){
 		try{
 			$sql = "DELETE FROM CATEGORIA WHERE cat_id = ?";
-			$ps = self::getStatement($sql);
+			$ps = getStatement($sql);
 			
 			$ps->bindParam(1,$id,PDO::PARAM_INT);
 			$ps->execute();
@@ -94,7 +94,7 @@ class RepositorioCategoria implements iRepositorio{
 	public function alterar($categoria){
 		try{
 			$sql = "UPDATE CATEGORIA SET cat_titulo = ?,cat_descricao = ?,cat_subid = ?";
-			$ps = self::getStatement($sql);
+			$ps = getStatement($sql);
 			
 			$ps->bindParam(1,$categoria->getTitulo(),PDO::PARAM_STR);
 			$ps->bindParam(2,$categoria->getDescricao(),PDO::PARAM_STR);
@@ -126,7 +126,7 @@ class RepositorioCategoria implements iRepositorio{
 	public function buscar($id){
 		try{
 			$sql = "SELECT * FROM CATEGORIA WHERE cat_id = ?";
-			$ps = self::getStatement($sql);
+			$ps = getStatement($sql);
 			$ps->bindParam(1,$id,PDO::PARAM_INT);
 			$ps->execute();
 			$rs = $ps->fetch(PDO::FETCH_ASSOC);
@@ -172,7 +172,7 @@ class RepositorioCategoria implements iRepositorio{
 				$sql .= $sqlConector."cat_subid = ? \n";
 			}
 			
-			$ps = self::getStatement($sql);
+			$ps = getStatement($sql);
 			$i = 1;
 			if($categoria->getTitulo() != null && !empty($categoria->getTitulo())){
 				$ps->bindParam($i, $categoria->getTitulo(), PDO::PARAM_STR);

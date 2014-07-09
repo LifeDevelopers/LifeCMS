@@ -15,7 +15,7 @@ class Auditoria {
 	private $descricao;
 	
 	function setId($id) {
-		self::$id = $id;
+		$this->id = $id;
 	}
 }
 ?>

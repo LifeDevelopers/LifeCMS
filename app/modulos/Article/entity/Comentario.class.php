@@ -12,52 +12,52 @@ class Comentario{
 	private $idArtigo;
 	
 	public function getId() {
-		return self::$id;
+		return $this->id;
 	}
 	public function setId($id){
-		self::$id = $id;
+		$this->id = $id;
 	}
 	
 	public function getNome() {
-		return self::$nome;
+		return $this->nome;
 	}
 	public function setNome($nome) {
-		self::$nome = $nome;
+		$this->nome = $nome;
 	}
 	
 	public function getEmail(){
-		return self::$email;
+		return $this->email;
 	}
 	public function setEmail($email){
-		self::$email = $email;
+		$this->email = $email;
 	}
 	
 	public function getTexto(){
-		return self::$texto;
+		return $this->texto;
 	}
 	public function setTexto($texto){
-		self::$texto = $texto;
+		$this->texto = $texto;
 	}
 	
 	public function getData(){
-		return self::$data;
+		return $this->data;
 	}
 	public function setData($data){
-		self::$data = $data;
+		$this->data = $data;
 	}
 	
 	public function getIdStat(){
-		return self::$idStat;
+		return $this->idStat;
 	}
 	public function setIdStat($idStat){
-		self::$idStat = $idStat;
+		$this->idStat = $idStat;
 	}
 	
 	public function getIdArtigo(){
-		return self::$idArtigo;
+		return $this->idArtigo;
 	}
 	public function setIdArtido($idArtigo){
-		self::$idArtigo = $idArtigo;
+		$this->idArtigo = $idArtigo;
 	}
 }
 ?>

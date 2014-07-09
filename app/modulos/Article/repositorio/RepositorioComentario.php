@@ -68,7 +68,7 @@ class RepositorioCategoria implements iRepositorio{
 	public function remover($id){
 		try{
 			$sql = "DELETE FROM COMENTARIO WHERE com_id = ?";
-			$ps = self::getStatement($sql);
+			$ps = getStatement($sql);
 				
 			$ps->bindParam(1,$id,PDO::PARAM_INT);
 			$ps->execute();
@@ -97,7 +97,7 @@ class RepositorioCategoria implements iRepositorio{
 	public function alterar($comentario){
 		try{
 			$sql = "UPDATE COMENTARIO SET com_nome = ?,com_email = ?,com_texto = ?,com_dtsubmit = ?,sta_id = ?,art_id = ?";
-			$ps = self::getStatement($sql);
+			$ps = getStatement($sql);
 				
 			$ps->bindParam(1,$comentario->getNome(),PDO::PARAM_STR);
 			$ps->bindParam(2,$comentario->getEmail(),PDO::PARAM_STR);
@@ -132,7 +132,7 @@ class RepositorioCategoria implements iRepositorio{
 	public function buscar($id){
 		try{
 			$sql = "SELECT * FROM COMENTARIO WHERE com_id = ?";
-			$ps = self::getStatement($sql);
+			$ps = getStatement($sql);
 			$ps->bindParam(1,$id,PDO::PARAM_INT);
 			$ps->execute();
 			$rs = $ps->fetch(PDO::FETCH_ASSOC);
@@ -190,7 +190,7 @@ class RepositorioCategoria implements iRepositorio{
 				$sql .= $sqlConector."art_id = ? \n";
 			}
 				
-			$ps = self::getStatement($sql);
+			$ps = getStatement($sql);
 			$i = 1;
 			if($comentario->getNome() != null && !empty($comentario->getNome())){
 				$ps->bindParam($i, $comentario->getNome(), PDO::PARAM_STR);

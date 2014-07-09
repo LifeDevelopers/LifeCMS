@@ -10,17 +10,17 @@ class Perfil {
 	private $nome;
 	
 	public function setNome($nome) {
-		self::$nome = $nome;
+		$this->nome = $nome;
 	}
 	public function getNome() {
-		return self::$nome;
+		return $this->nome;
 	}
 	
 	public function setId($id) {
-		self::$id = $id;
+		$this->id = $id;
 	}
 	public function getId() {
-		return self::$id;
+		return $this->id;
 	}
 }
 ?>

@@ -25,80 +25,80 @@ class Article
 	}
 
 	public function setId($id){
-		self::$id = $id;
+		$this->id = $id;
 	}
 	public function getId(){
-		return self::$id;
+		return $this->id;
 	}
 
 	public function setTitulo($titulo){
-		self::$titulo = $titulo;
+		$this->titulo = $titulo;
 	}
 	public function getTitulo(){
 		return self::titulo;
 	}
 
 	public function setConteudo($conteudo){
-		self::$conteudo = $conteudo;
+		$this->conteudo = $conteudo;
 	}
 	public function getConteudo(){
-		return self::$conteudo;
+		return $this->conteudo;
 	}
 
 	public function setCategoria($Categoria){
-		self::$Categoria = $Categoria;
+		$this->Categoria = $Categoria;
 	}
 	public function getCategoria(){
-		return self::$Categoria;
+		return $this->Categoria;
 	}
 
 	public function setPublicado($publicado){
-		self::$publicado = $publicado;
+		$this->publicado = $publicado;
 	}
 	public function getPublicado(){
-		return self::$publicado;
+		return $this->publicado;
 	}
 
 	public function setImagem($imagem){
-		self::$imagem = $imagem;
+		$this->imagem = $imagem;
 	}
 	public function getImagem(){
-		return self::$imagem;
+		return $this->imagem;
 	}
 
 	public function setDtPublicacao($dataPublicacao){
-		self::$dataPublicacao = $dataPublicacao;
+		$this->dataPublicacao = $dataPublicacao;
 	}
 	public function getDtPublicacao(){
-		return self::$dataPublicacao;
+		return $this->dataPublicacao;
 	}
 
 	public function setTags($tags){
-		self::$tags = $tags;
+		$this->tags = $tags;
 	}
 	public function getTags(){
-		return self::$tags;
+		return $this->tags;
 	}
 
 	public function setPublicado($publicado){
-		self::$publicado = $publicado;
+		$this->publicado = $publicado;
 	}
 	public function getPublicado(){
-		return self::$publicado;
+		return $this->publicado;
 	}
 	
 	public function setBanner($banner){
-		self::$banner = $banner;
+		$this->banner = $banner;
 	}
 	public function getBanner(){
-		return self::$banner;
+		return $this->banner;
 	}
 	
 	public function setUser($usuario) {
-		self::$user = $usuario;
+		$this->user = $usuario;
 	}
 	public function getUser() {
-		return self::$user;
+		return $this->user;
 	}
 }
 ?>

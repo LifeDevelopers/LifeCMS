@@ -50,7 +50,7 @@ class RepositorioArticle implements iCadastro
 	public function remover($id){
 		try{
 			$sql = "DELETE FROM ARTICLE WHERE art_id = ?";
-			$ps = self::getStatement($sql);
+			$ps = getStatement($sql);
 			
 			$ps->bindParam(1,$id,PDO::PARAM_INT);
 			$ps->execute();
@@ -73,7 +73,7 @@ class RepositorioArticle implements iCadastro
 	public function alterar($artigo){
 		try{
 			$sql = "UPDATE ARTICLE SET art_titulo = ?,art_conteudo = ?,art_dtpublicacao = ?,art_tags = ?,art_publicado = ?,art_imagem = ?,art_banner = ?,cat_id = ?, user_id = ? WHERE art_id = ?";
-			$ps = self::getStatement($sql);
+			$ps = getStatement($sql);
 			
 			$ps->bindParam(1,$artigo->getTitulo(),PDO::PARAM_STR);
 			$ps->bindParam(2,$artigo->getConteudo(),PDO::PARAM_STR);
@@ -105,7 +105,7 @@ class RepositorioArticle implements iCadastro
 	public function buscar($id){
 		try{
 			$sql = "SELECT * FROM ARTICLE a, CATEGORIA c, UTILIZADOR u, PERFIL p WHERE a.cat_id = c.cat_id and a.use_id = u.use_id and u.per_id = p.per_id and a.id = ?";
-			$ps = self::getStatement($sql);
+			$ps = getStatement($sql);
 			$ps->bindParam(1,$id,PDO::PARAM_INT);
 			$ps->execute();
 			$rs = $ps->fetch(PDO::FETCH_ASSOC);
@@ -183,7 +183,7 @@ class RepositorioArticle implements iCadastro
 				$sql .= $sqlConector."cat_descricao LIKE '%?%' \n";
 			}
 			
-			$ps = self::getStatement($sql);
+			$ps = getStatement($sql);
 			$i = 1;
 			if($artigo->getTitulo() != null && !empty($artigo->getTitulo())){
 				$ps->bindParam($i, $artigo->getTitulo(), PDO::PARAM_STR);

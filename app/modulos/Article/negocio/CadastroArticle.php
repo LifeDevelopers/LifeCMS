@@ -10,37 +10,37 @@ class CadastroArticle implements iCadastro
 
 	function __construct($repositorio)
 	{
-		self::$repositorio = $repositorio;
+		$this->repositorio = $repositorio;
 	}
 
 	// Sobrescrevendo o método salvar
 	public function salvar($artigo){
-		return self::$repositorio->salvar($artigo);
+		return $this->repositorio->salvar($artigo);
 	}
 
 	// Sobrescrevendo o método remover
 	public function remover($id){
-		return self::$repositorio->remover($id);
+		return $this->repositorio->remover($id);
 	}
 
 	// Sobrescrevendo o método alterar
 	public function alterar($artigo){
-		return self::$repositorio->alterar($artigo);
+		return $this->repositorio->alterar($artigo);
 	}
 
 	// Sobrescrevendo o método buscar
 	public function buscar($id){
-		return self::$repositorio->buscar($id);
+		return $this->repositorio->buscar($id);
 	}
 
 	// Sobrescrevendo o método filtrar
 	public function filtrar($artigo){
-		return self::$repositorio->filtrar($artigo);
+		return $this->repositorio->filtrar($artigo);
 	}
 
 	// Sobrescrevendo o método validar
 	public function validar($artigo){
-		return self::$repositorio->validar($artigo);
+		return $this->repositorio->validar($artigo);
 	}
 }
 ?>

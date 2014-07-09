@@ -19,7 +19,7 @@ class CadastroCategoria implements iCadastro{
 	 */
 	function __construct($repositorio)
 	{
-		self::$repositorio = $repositorio;
+		$this->repositorio = $repositorio;
 	}
 
 	/**
@@ -30,7 +30,7 @@ class CadastroCategoria implements iCadastro{
 	 * @return boolean
 	 */
 	public function salvar($comentario){
-		return self::$repositorio->salvar($comentario);
+		return $this->repositorio->salvar($comentario);
 	}
 
 	/**
@@ -41,7 +41,7 @@ class CadastroCategoria implements iCadastro{
 	 * @return boolean
 	 */
 	public function remover($id){
-		return self::$repositorio->remover($id);
+		return $this->repositorio->remover($id);
 	}
 
 	/**
@@ -52,7 +52,7 @@ class CadastroCategoria implements iCadastro{
 	 * @return boolean
 	 */
 	public function alterar($comentario){
-		return self::$repositorio->alterar($comentario);
+		return $this->repositorio->alterar($comentario);
 	}
 
 	/**
@@ -63,7 +63,7 @@ class CadastroCategoria implements iCadastro{
 	 * @return boolean
 	 */
 	public function buscar($id){
-		return self::$repositorio->buscar($id);
+		return $this->repositorio->buscar($id);
 	}
 
 	/**
@@ -74,7 +74,7 @@ class CadastroCategoria implements iCadastro{
 	 * @return array
 	 */
 	public function filtrar($comentario){
-		return self::$repositorio->filtrar($comentario);
+		return $this->repositorio->filtrar($comentario);
 	}
 
 	/**
@@ -85,7 +85,7 @@ class CadastroCategoria implements iCadastro{
 	 * @return boolean
 	 */
 	public function validar($comentario){
-		return self::$repositorio->validar($comentario);
+		return $this->repositorio->validar($comentario);
 	}
 }
 ?>

@@ -20,73 +20,73 @@ class Usuario {
 	private $perfil;
 	
 	public function setId($id) {
-		self::$id = $id;
+		$this->id = $id;
 	}
 	public function getId(){
-		return self::$id;
+		return $this->id;
 	}
 	
 	public function setNome($nome) {
-		self::$nome = $nome;
+		$this->nome = $nome;
 	}
 	public function getNome() {
-		return self::$nome;
+		return $this->nome;
 	}
 	
 	public function setUser($user) {
-		self::$user = $user;
+		$this->user = $user;
 	}
 	public function getUser() {
-		return self::$user;
+		return $this->user;
 	}
 	
 	public function setSenha($senha) {
-		self::$senha = md5($senha,true);
+		$this->senha = md5($senha,true);
 	}
 	public function getSenha() {
-		return self::$senha;
+		return $this->senha;
 	}
 	
 	public function setAlcunha($alcunha) {
-		self::$alcunha = $alcunha;
+		$this->alcunha = $alcunha;
 	}
 	public function getAlcunha(){
-		return self::$alcunha;
+		return $this->alcunha;
 	}
 	
 	public function setEmail($email) {
-		self::$email = $email;
+		$this->email = $email;
 	}
 	public function getEmail() {
-		return self::$email;
+		return $this->email;
 	}
 	
 	public function setDtCriacao($data) {
-		self::$dtcriacao = $data;
+		$this->dtcriacao = $data;
 	}
 	public function getDtCriacao() {
-		return self::$dtcriacao;
+		return $this->dtcriacao;
 	}
 	
 	public function setWebSite($website) {
-		self::$website = $website;
+		$this->website = $website;
 	}
 	public function getWebSite() {
-		return self::$website;
+		return $this->website;
 	}
 	
 	public function setBiografia($biografia) {
-		self::$biografia = $biografia;
+		$this->biografia = $biografia;
 	}
 	public function getBiografia(){
-		return self::$biografia;
+		return $this->biografia;
 	}
 	
 	public function setPerfil($perfil){
-		self::$perfil = $perfil;
+		$this->perfil = $perfil;
 	}
 	public function getPerfil(){
-		return self::$perfil;
+		return $this->perfil;
 	}
 }
 ?>

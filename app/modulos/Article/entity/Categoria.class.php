@@ -10,31 +10,31 @@ class Categoria
 	private $subCategoria;
 
 	public function setId($id) {
-		self::$id = $id;
+		$this->id = $id;
 	}
 	public function getId(){
-		return self::$id;
+		return $this->id;
 	}
 	
 	public function setTitulo($titulo) {
-		self::$titulo = $titulo;
+		$this->titulo = $titulo;
 	}
 	public function getTitulo() {
-		return self::$titulo;
+		return $this->titulo;
 	}
 	
 	public function setDescricao($descricao) {
-		self::$descricao = $descricao;
+		$this->descricao = $descricao;
 	}
 	public function getDescricao() {
-		return self::$descricao;
+		return $this->descricao;
 	}
 	
 	public function setSubCategoria($subCategoria) {
-		self::$subCategoria = $subCategoria;
+		$this->subCategoria = $subCategoria;
 	}
 	public function getSubCategoria() {
-		return self::$subCategoria;
+		return $this->subCategoria;
 	}
 }
 ?>
