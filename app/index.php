@@ -2,7 +2,7 @@
 <html lang="">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Life CMS</title>
     <link rel="stylesheet" href="">
 </head>
 
