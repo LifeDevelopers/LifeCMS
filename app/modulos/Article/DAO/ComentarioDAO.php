@@ -166,7 +166,7 @@ class ComentarioDAO implements iRepositorio{
 	 * @return array
 	 */
 	public function filtrar($comentario){
-		$listaCategorias = array();
+		$listaComentarios = array();
 		try{
 			$sql = "SELECT * FROM COMENTARIO";
 			$sqlConector = " AND ";
@@ -218,7 +218,7 @@ class ComentarioDAO implements iRepositorio{
 			}
 				
 			$ps->execute();
-			$listaCategorias = $ps->fech(PDO::FETCH_ASSOC);
+			$listaComentarios = $ps->fech(PDO::FETCH_ASSOC);
 			$ps = null;
 		}catch (PDOException $e){
 			echo "<p>Erro ao tentar alterar dados no Banco.</p>";
@@ -226,7 +226,7 @@ class ComentarioDAO implements iRepositorio{
 			echo "<p>Message: ".$e->getMessage()."</p>";
 			echo "<p>Linha: ".$e->getLine()."</p>";
 		}
-		return $listaCategorias;
+		return $listaComentarios;
 	}
 }
 ?>
