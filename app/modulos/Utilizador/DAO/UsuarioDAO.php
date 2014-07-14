@@ -182,7 +182,7 @@ class ComentarioDAO implements iRepositorio{
 	public function filtrar($usuario){
 		$listaUsuarios = array();
 		try{
-			$sql = "SELECT * FROM UTILIZADOR WHERE";
+			$sql = "SELECT * FROM UTILIZADOR WHERE ";
 			$sqlConector = " AND ";
 				
 			if($usuario->getNome() != null && !empty($usuario->getNome())){
