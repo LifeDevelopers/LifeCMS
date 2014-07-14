@@ -169,7 +169,7 @@ class ComentarioDAO implements iRepositorio{
 			echo "<p>Linha: ".$e->getLine()."</p>";
 		}
 
-		return $categoria;
+		return $usuario;
 	}
 
 	/**
