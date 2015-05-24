@@ -14,7 +14,7 @@ class Repositorio
 	{
 		$this->dns = "mysql:dbname=lifeCMS;host=localhost";
 		$this->user = "root";
-		$this->pass = "@rdc456#";
+		$this->pass = "";
 	}
 
 	public static function GetConection(){
